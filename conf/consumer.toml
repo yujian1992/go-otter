@@ -1,0 +1,26 @@
+#binlog position flush到磁盘的间隔
+binlog_flush_ms = 2000  #2s刷新一次
+
+[clusters]
+brokers = ["10.19.14.48:9092"]
+topic = "mysql"
+topics = ["mysql"]
+group = "mysql"
+
+[log]
+log_path = "log/Consumer.log"
+# 0 单个文件 1按天分 2按小时分
+type = 2
+highlighting = false
+level = "debug"
+
+#定义消费的mysql库的信息
+[[mysql]]
+id = "1"
+addr = "10.19.14.48:53400"
+user = "root"
+password = "123456"
+flavor = "mysql"  
+data_path = "./conf/master1.info"
+nsname = "ns1"
+tablename = "table1"
